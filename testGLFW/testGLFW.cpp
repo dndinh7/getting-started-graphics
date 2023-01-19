@@ -50,11 +50,14 @@ int main(int argc, char** argv)
   while (!glfwWindowShouldClose(window))
   {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear the buffers
+    double xpos;
+    double ypos;
 
     // Animate the screen color as a test
-    double time = glfwGetTime();
-    double red = (sin(time) + 1) * 0.5; // map sin value [-1,1] to color value [0,1]
-    double blue = (cos(time) + 1) * 0.5; // map cos value [-1,1] to color value [0,1]
+    //double time = glfwGetTime();
+    glfwGetCursorPos(window, &xpos, &ypos);
+    double red = (sin(xpos * 0.007) + 1) * 0.5; // map sin value [-1,1] to color value [0,1]
+    double blue = (cos(ypos * 0.007) + 1) * 0.5; // map cos value [-1,1] to color value [0,1]
 
     // Create a vector to test glm
     glm::vec3 color(red, 0, blue);
